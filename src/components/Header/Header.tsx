@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import logo from '@/assets/logo.svg'
 import * as C from './style'
-import { Container } from '@/styles/GlobalStyles'
+import { Container } from '@/styles/utils'
 
 function Header() {
   return (

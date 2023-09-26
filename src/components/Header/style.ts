@@ -14,6 +14,7 @@ export const Header = styled.header`
 
 export const Title = styled.h1`
   font-size: clamp(2rem, 10vmin, 4rem);
+  font-weight: 900;
   line-height: 1;
   color: ${colors.darkGrey};
   text-transform: uppercase;

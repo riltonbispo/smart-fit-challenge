@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Metadata } from 'next'
-import GlobalStyles from '@/styles/GlobalStyles'
+import '@/styles/global.css'
 import { Roboto } from 'next/font/google'
 
 const roboto = Roboto({
@@ -20,10 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
-        <GlobalStyles />
-        {children}
-      </body>
+      <body className={roboto.className}>{children}</body>
     </html>
   )
 }
