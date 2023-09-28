@@ -34,7 +34,7 @@ const MyForm = () => {
           <Image src={iconHour} height={25} alt=""></Image>
           <span>Horário</span>
         </div>
-        <h3 className="border-b-2 border-zinc-300 text-2xl mt-4">
+        <h3 className="border-b-2 border-zinc-300 text-2xl my-4 font-light pl-3">
           Qual período quer treinar?
         </h3>
         <form
@@ -106,7 +106,7 @@ const MyForm = () => {
             </p>
           </div>
 
-          <div className="flex flex-col mx-auto md:flex-row  gap-4 ">
+          <div className="flex flex-col md:mx-auto md:flex-row  gap-4 mt-6">
             <Button variant="primary" value="econtrar unidade" type="submit" />
             <Button
               variant="secondary"

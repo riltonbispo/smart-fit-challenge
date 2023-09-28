@@ -1,11 +1,11 @@
-import React, { ReactNode, InputHTMLAttributes } from 'react'
+import React, { InputHTMLAttributes } from 'react'
 import * as C from './style'
 
 type ButtonProps = {
   variant: 'primary' | 'secondary'
 } & InputHTMLAttributes<HTMLInputElement>
 
-const Button = ({ children, variant, ...rest }: ButtonProps) => {
+const Button = ({ variant, ...rest }: ButtonProps) => {
   return <C.Button $variant={variant} {...rest} />
 }
 
