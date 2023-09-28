@@ -12,6 +12,12 @@ export const Header = styled.header`
   }
 `
 
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`
+
 export const Title = styled.h1`
   font-size: clamp(2rem, 10vmin, 4rem);
   font-weight: 900;

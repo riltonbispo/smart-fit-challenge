@@ -11,15 +11,17 @@ function Header() {
         <Image src={logo} height={100} width={100} alt="logo" />
       </C.Header>
       <Container>
-        <C.Title>
-          Reabertura <br /> smart fit
-        </C.Title>
-        <C.Divider />
-        <C.Body>
-          O horário de funcionamento das nossas unidades está seguindo os
-          decretos de cada município. Por isso, confira aqui se a sua unidade
-          está aberta e as medidas de segurança que estamos seguindo.
-        </C.Body>
+        <C.Content>
+          <C.Title>
+            Reabertura <br /> smart fit
+          </C.Title>
+          <C.Divider />
+          <C.Body>
+            O horário de funcionamento das nossas unidades está seguindo os
+            decretos de cada município. Por isso, confira aqui se a sua unidade
+            está aberta e as medidas de segurança que estamos seguindo.
+          </C.Body>
+        </C.Content>
       </Container>
     </>
   )

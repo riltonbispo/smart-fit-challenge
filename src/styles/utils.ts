@@ -7,7 +7,4 @@ export const Container = styled.div`
   padding-inline: 2rem;
   width: min(1110px, 100% - 1rem * 2);
   margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
 `
