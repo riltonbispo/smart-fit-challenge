@@ -1,16 +1,17 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Container } from '@/styles/utils'
-import { getGym, selectGym } from '@/services/gymApi'
+import { selectGym } from '@/services/gymApi'
 import iconHour from '@/assets/icon-hour.png'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
 import Image from 'next/image'
 import Button from '@/components/Button/Button'
 import { useGyms } from '@/contexts/GymContext'
+import { GymType } from '@/types/gymType'
 
 type radioForm = {
-  radio: '06h às 22h' | '09h às 18h' | '17h às 21h'
+  radio: 'manha' | 'tarde' | 'noite'
 }
 
 const MyForm = () => {
@@ -20,23 +21,28 @@ const MyForm = () => {
   const { register, handleSubmit, reset } = useForm<radioForm>()
 
   const onSubmit: SubmitHandler<radioForm> = async (data: radioForm) => {
-    let gyms
+    let gyms: GymType[] | undefined = []
 
-    if (showAllGym) {
-      gyms = await getGym()
-    } else {
-      gyms = await selectGym(data.radio)
-    }
+    gyms = await selectGym(data.radio, showAllGym)
 
-    gContext?.dispatch({
-      type: 'set',
-      payload: gyms,
+    gyms &&
+      gContext?.dispatch({
+        type: 'set',
+        payload: gyms,
+      })
+
+    window.scrollBy({
+      top: 400,
+      behavior: 'smooth',
     })
   }
 
   return (
     <Container>
-      <div className="border-2 border-gray-300 p-4 rounded text-zinc-500">
+      <div
+        id="results"
+        className="border-2 border-gray-300 p-4 rounded text-zinc-500"
+      >
         <div className="flex items-center gap-2">
           <Image src={iconHour} height={25} alt=""></Image>
           <span>Horário</span>
@@ -58,7 +64,7 @@ const MyForm = () => {
                 {...register('radio')}
                 id="manha"
                 type="radio"
-                value="06h às 22h"
+                value="manha"
               />
               <span className="ml-2">Manha</span>
             </div>
@@ -74,7 +80,7 @@ const MyForm = () => {
                 {...register('radio')}
                 id="tarde"
                 type="radio"
-                value="09h às 18h"
+                value="tarde"
               />
               <span className="ml-2">Tarde</span>
             </div>
@@ -90,7 +96,7 @@ const MyForm = () => {
                 {...register('radio')}
                 id="noite"
                 type="radio"
-                value="17h às 21h"
+                value="noite"
               />
               <span className="ml-2">Noite</span>
             </div>
