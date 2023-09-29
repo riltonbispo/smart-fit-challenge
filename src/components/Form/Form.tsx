@@ -4,27 +4,34 @@ import { Container } from '@/styles/utils'
 import { getGym, selectGym } from '@/services/gymApi'
 import iconHour from '@/assets/icon-hour.png'
 
-import { useForm } from 'react-hook-form'
-import { GymType } from '@/types/gymType'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import Image from 'next/image'
 import Button from '@/components/Button/Button'
+import { useGyms } from '@/contexts/GymContext'
+
+type radioForm = {
+  radio: '06h às 22h' | '09h às 18h' | '17h às 21h'
+}
 
 const MyForm = () => {
-  const [allGym, setAllGym] = useState<GymType[]>([])
+  const gContext = useGyms()
   const [showAllGym, setShowAllGym] = useState(false)
 
-  const { register, handleSubmit, reset } = useForm()
+  const { register, handleSubmit, reset } = useForm<radioForm>()
 
-  const onSubmit = async (data: any) => {
+  const onSubmit: SubmitHandler<radioForm> = async (data: radioForm) => {
+    let gyms
+
     if (showAllGym) {
-      const gyms = await getGym()
-      setAllGym(gyms)
-      console.log(gyms)
+      gyms = await getGym()
     } else {
-      const gyms = await selectGym(data.radio)
-      setAllGym(gyms)
-      console.log(gyms)
+      gyms = await selectGym(data.radio)
     }
+
+    gContext?.dispatch({
+      type: 'set',
+      payload: gyms,
+    })
   }
 
   return (
@@ -102,7 +109,9 @@ const MyForm = () => {
             </label>
             <p>
               resultados encontrados{' '}
-              <span className="font-bold text-zinc-800">{allGym.length}</span>
+              <span className="font-bold text-zinc-800">
+                {gContext?.gyms.length}
+              </span>
             </p>
           </div>
 
@@ -113,7 +122,10 @@ const MyForm = () => {
               type="reset"
               value="limpar"
               onClick={() => {
-                setAllGym([])
+                gContext?.dispatch({
+                  type: 'set',
+                  payload: [],
+                })
                 reset()
               }}
             />

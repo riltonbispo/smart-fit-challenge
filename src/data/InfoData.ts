@@ -24,7 +24,7 @@ export const infoData = [
     ],
   },
   {
-    title: 'Fonte',
+    title: 'Bebedouro',
     items: [
       { image: fountainBlock, text: 'Proibido' },
       { image: fountainPartial, text: 'Parcial' },

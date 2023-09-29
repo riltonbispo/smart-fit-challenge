@@ -2,6 +2,7 @@ import React from 'react'
 import type { Metadata } from 'next'
 import '@/styles/global.css'
 import { Roboto } from 'next/font/google'
+import { ProviderGymContext } from '@/contexts/GymContext'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -20,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <ProviderGymContext>{children}</ProviderGymContext>
+      </body>
     </html>
   )
 }
