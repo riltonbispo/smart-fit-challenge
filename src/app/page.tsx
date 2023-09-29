@@ -1,3 +1,4 @@
+import Card from '@/components/Card/Card'
 import Form from '@/components/Form/Form'
 import Header from '@/components/Header/Header'
 import Info from '@/components/Info/Info'
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <Form />
       <Info />
+      <Card />
     </main>
   )
 }

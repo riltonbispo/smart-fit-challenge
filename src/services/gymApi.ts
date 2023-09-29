@@ -22,7 +22,6 @@ export const selectGym = async (selectTurn: string) => {
 
     const gyms: GymType[] = response.data.locations
 
-    // Filtrar apenas as academias que têm schedules definidos
     const filteredGyms = gyms.filter((gym) => gym.schedules)
 
     const selectedGyms = filteredGyms.filter((gym) =>

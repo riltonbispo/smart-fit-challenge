@@ -39,3 +39,15 @@ export const infoData = [
     ],
   },
 ]
+
+export {
+  fountainBlock,
+  fountainPartial,
+  lockerroomBlock,
+  lockerroomPartial,
+  lockerroomRequired,
+  maskRecomended,
+  maskRequired,
+  towelRecomended,
+  towelRequired,
+}
