@@ -128,6 +128,7 @@ const MyForm = () => {
               type="reset"
               value="limpar"
               onClick={() => {
+                setShowAllGym((prev) => !prev)
                 gContext?.dispatch({
                   type: 'set',
                   payload: [],
